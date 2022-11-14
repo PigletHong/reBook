@@ -1,0 +1,5 @@
+@import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css');
+
+* {
+  font-family: 'NanumBarunGothic'!important;
+}
