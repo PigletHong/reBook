@@ -15,6 +15,7 @@
 
 .logo-box .logo {
   width: 120px;
+  cursor: pointer;
 }
 
 .icon-box {
@@ -27,6 +28,7 @@
 .icon-box .icon {
   width: 28px;
   margin: 8px;
+  cursor: pointer;
 }
 
 /* //icon hover 색상 이미지 적용
@@ -45,6 +47,7 @@
 .bottom-menu p.menu {
   color: white;
   padding: 10px;
+  cursor: pointer;
   transition: 0.3s ease;
 }
 
