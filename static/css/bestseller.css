@@ -1,0 +1,49 @@
+.mycards {
+    background-color: #3F3E3E;
+    margin: 100px 800px 100px 800px;
+    border-radius: 30px;
+    display: block;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.card-img-top {
+    padding: 40px 0px 50px 40px;
+    float: left;
+    position: absolute;
+}
+
+.card-body {
+    margin-left: 170px;
+    margin-right: 30px;
+    padding-bottom: 1px;
+}
+
+.card-price {
+    text-align: right;
+}
+
+.card-title {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 40px 0px 30px 50px;
+    color: #ffdc9f;
+}
+
+.card-author {
+    font-size: 18px;
+    padding: 0px 0px 30px 50px;
+}
+
+.card-desc {
+    font-size: 18px;
+    padding: 0px 0px 30px 50px;
+    line-height: 27px;
+}
+
+.card-price {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffdc9f;
+    margin: 20px 8px 20px 0px;
+}
