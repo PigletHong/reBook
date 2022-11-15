@@ -1,0 +1,71 @@
+.top-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 32px;
+}
+
+.logo-box {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 60px;
+}
+
+.logo-box .logo {
+  width: 120px;
+}
+
+.icon-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 60px;
+}
+
+.icon-box .icon {
+  width: 28px;
+  margin: 8px;
+}
+
+/* //icon hover 색상 이미지 적용
+.icon-box .icon:hover{
+  
+} */
+
+.bottom-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.bottom-menu p.menu {
+  color: white;
+  padding: 10px;
+  transition: 0.3s ease;
+}
+
+.bottom-menu p.selected {
+  color: #ffdc9f;
+}
+
+.bottom-menu p.selected:hover {
+  border-top: 2px solid #ffdc9f;
+  border-bottom: 2px solid #ffdc9f;
+  padding: 6px 0; 
+}
+
+.bottom-menu p:hover {
+  border-top: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 6px 0; 
+}
+
+
+.bottom-menu p.menu:nth-child(2) {
+  margin-left: 20%;
+  margin-right: 20%;
+}

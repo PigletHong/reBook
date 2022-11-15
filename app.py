@@ -8,8 +8,13 @@ db = client.dbsparta
 
 
 @app.route('/')
-def main():
-    return render_template('main.html')
+def newbooks():
+    return render_template('newbooks.html')
+
+
+@app.route('/bestseller')
+def bestseller():
+    return render_template('bestseller.html')
 
 
 @app.route('/login')

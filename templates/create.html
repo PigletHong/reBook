@@ -7,11 +7,29 @@
 
     <link rel="stylesheet" href="../static/css/reset.css" />
     <link rel="stylesheet" href="../static/css/default.css" />
+    <link rel="stylesheet" href="../static/css/navigation.css" />
     <link rel="stylesheet" href="../static/css/create.css" />
 
     <title>re:book</title>
   </head>
   <body>
+    <div class="topbar">
+      <div class="top-menu">
+        <div class="logo-box" onclick="location.href='/'">
+          <img class="logo" src="../static/image/rebookLogo.png" />
+        </div>
+        <div class="icon-box">
+          <img class="icon logoutIcon" src="../static/image/logoutIcon.png" />
+          <h3 class="icon-slash">/</h3>
+          <img class="icon writeIcon" src="../static/image/writeIcon.png" />
+        </div>
+      </div>
+      <div class="bottom-menu">
+        <p class="menu" onclick="location.href='/'">New Books</p>
+        <p class="menu" onclick="location.href='/bestseller'">Best Seller</p>
+        <p class="menu selected" onclick="location.href='/reviews'">Reviews</p>
+      </div>
+    </div>
     <h1>독후감 작성 페이지</h1>
     <h3>독후감 작성 폼이 들어갈 자리</h3>
   </body>
