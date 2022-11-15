@@ -8,22 +8,26 @@
 
     <link rel="stylesheet" href="../static/css/reset.css" />
     <link rel="stylesheet" href="../static/css/default.css" />
+    <link rel="stylesheet" href="../static/css/navigation.css" />
     <link rel="stylesheet" href="../static/css/reviews.css" />
   </head>
   <body>
-
-    <div>
-        <img src="../static/image/rebookLogo.png" class="logo">
-        <img src="../static/image/logoutIcon.png" class="logoutIcon">
-        <h3 class="icon-slash">/</h3>
-        <img src="../static/image/writeIcon.png" class="writeIcon">
+    <div class="topbar">
+      <div class="top-menu">
+        <div class="logo-box" onclick="location.href='/'">
+          <img class="logo" src="../static/image/rebookLogo.png" />
+        </div>
+        <div class="icon-box">
+          <img class="icon logoutIcon" src="../static/image/logoutIcon.png" />
+          <h3 class="icon-slash">/</h3>
+          <img class="icon writeIcon" src="../static/image/writeIcon.png" />
+        </div>
+      </div>
+      <div class="bottom-menu">
+        <p class="menu" onclick="location.href='/'">New Books</p>
+        <p class="menu" onclick="location.href='/bestseller'">Best Seller</p>
+        <p class="menu selected" onclick="location.href='/reviews'">Reviews</p>
+      </div>
     </div>
-
-    <div class="menu">
-        <h3 style="margin: 50px 120px 50px 120px">신상품 / 베스트 셀러</h3>
-        <h3 style="margin: 50px 120px 50px 120px">개인 독후감</h3>
-        <h3 style="margin: 50px 120px 50px 120px">전체 독후감</h3>
-    </div>
-
   </body>
 </html>
