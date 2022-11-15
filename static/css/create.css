@@ -1,0 +1,83 @@
+.content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+}
+
+.content h1 {
+  font-size: 36px;
+  margin-bottom: 50px;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  max-width: 800px;
+}
+
+.review-form .box {
+  margin-bottom: 28px;
+  width: 100%;
+}
+
+.url-box input.book-url{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-top: 5px;
+  background-color: transparent;
+  border: solid 2px white;
+}
+
+.url-box input.book-url:focus{
+  outline: none;
+}
+
+.description-box textarea.book-content {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
+  background-color: #0e0e0e;
+  border: solid 2px white;
+  resize: vertical;
+}
+
+.description-box textarea.book-content:focus{
+  outline: none;
+}
+
+.description-box textarea.book-content::-webkit-scrollbar {
+  display: none;
+}
+
+.description-box textarea.book-content::-webkit-scrollbar-button {
+  display: none;
+}
+
+.tag-box .tags {
+  margin: 10px 0;
+}
+
+.tags .tag-btn {
+  font-size: 12px;
+  color: #0e0e0e;
+  padding: 7px;
+  margin: 4px 5px;
+  border-radius: 12px;
+}
+
+.tag-btn.selected {
+  background-color: #ffdc9f;
+}
+
+button.write-btn {
+  background-color: #ffdc9f;
+  color: #0e0e0e;
+  padding: 10px;
+}

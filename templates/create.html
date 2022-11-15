@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../static/css/navigation.css" />
     <link rel="stylesheet" href="../static/css/create.css" />
 
+    <script src="../static/js/create.js"></script>
+
     <title>re:book</title>
   </head>
   <body>
@@ -30,7 +32,111 @@
         <p class="menu" onclick="location.href='/reviews'">Reviews</p>
       </div>
     </div>
-    <h1>독후감 작성 페이지</h1>
-    <h3>독후감 작성 폼이 들어갈 자리</h3>
+    <div class="content">
+      <h1 class="point-color">리뷰 작성하기</h1>
+      <div class="review-form">
+        <div class="url-box box">
+          <p>책 URL</p>
+          <input
+            class="book-url"
+            placeholder="교보문고의 책 URL을 추가해주세요!"
+            type="text"
+          />
+        </div>
+        <div class="description-box box">
+          <p>책 내용</p>
+          <textarea
+            class="book-content"
+            type="text"
+            rows="10"
+            oninput="calcTextareaHeight(this)"
+          ></textarea>
+        </div>
+        <div class="tag-box box">
+          <p>태그</p>
+          <div class="tags">
+            <button class="tag-btn" id="novel" onclick="tagBtnHandler(event)">
+              소설
+            </button>
+            <button class="tag-btn" id="poet" onclick="tagBtnHandler(event)">
+              시/에세이
+            </button>
+            <button class="tag-btn" id="liberal" onclick="tagBtnHandler(event)">
+              인문
+            </button>
+            <button class="tag-btn" id="family" onclick="tagBtnHandler(event)">
+              가정/육아
+            </button>
+            <button class="tag-btn" id="cook" onclick="tagBtnHandler(event)">
+              요리
+            </button>
+            <button class="tag-btn" id="health" onclick="tagBtnHandler(event)">
+              건강
+            </button>
+            <button class="tag-btn" id="hobby" onclick="tagBtnHandler(event)">
+              취미/실용/스포츠
+            </button>
+            <button class="tag-btn" id="economy" onclick="tagBtnHandler(event)">
+              경제/경영
+            </button>
+            <button class="tag-btn" id="self" onclick="tagBtnHandler(event)">
+              자기계발
+            </button>
+            <button
+              class="tag-btn"
+              id="politics"
+              onclick="tagBtnHandler(event)"
+            >
+              정치/사회
+            </button>
+            <button class="tag-btn" id="history" onclick="tagBtnHandler(event)">
+              역사/문화
+            </button>
+            <button
+              class="tag-btn"
+              id="religion"
+              onclick="tagBtnHandler(event)"
+            >
+              종교
+            </button>
+            <button class="tag-btn" id="art" onclick="tagBtnHandler(event)">
+              예술/대중문화
+            </button>
+            <button class="tag-btn" id="tech" onclick="tagBtnHandler(event)">
+              기술/공학
+            </button>
+            <button class="tag-btn" id="foreign" onclick="tagBtnHandler(event)">
+              외국어
+            </button>
+            <button class="tag-btn" id="science" onclick="tagBtnHandler(event)">
+              과학
+            </button>
+            <button class="tag-btn" id="job" onclick="tagBtnHandler(event)">
+              취업/수험서
+            </button>
+            <button class="tag-btn" id="trip" onclick="tagBtnHandler(event)">
+              여행
+            </button>
+            <button class="tag-btn" id="it" onclick="tagBtnHandler(event)">
+              컴퓨터/IT
+            </button>
+            <button
+              class="tag-btn"
+              id="magazine"
+              onclick="tagBtnHandler(event)"
+            >
+              잡지
+            </button>
+            <button class="tag-btn" id="youth" onclick="tagBtnHandler(event)">
+              청소년
+            </button>
+            <button class="tag-btn" id="comics" onclick="tagBtnHandler(event)">
+              만화
+            </button>
+          </div>
+        </div>
+        <button class="write-btn point-color">작성하기</button>
+      </div>
+    </div>
   </body>
 </html>
