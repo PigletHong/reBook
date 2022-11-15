@@ -1,9 +1,4 @@
-from pymongo import MongoClient
-from flask import Flask, render_template, request, jsonify, session, redirect, url_for
-import config
-import jwt
-import datetime
-import hashlib
+from flask import Flask, render_template, jsonify, request, session, redirect, url_for
 
 app = Flask(__name__)
 
@@ -12,12 +7,8 @@ import certifi
 
 ca=certifi.where()
 
-
-client = MongoClient(config.mongodb_url)
-db = client.dbsparta
-
-
-
+client = MongoClient("mongodb+srv://test:test@cluster0.15fhovx.mongodb.net/test", tlsCAFile=ca)
+db = client.dbsparta_plus_week4
 
 # JWT 토큰을 만들 때 필요한 비밀문자열입니다. 아무거나 입력해도 괜찮습니다.
 # 이 문자열은 서버만 알고있기 때문에, 내 서버에서만 토큰을 인코딩(=만들기)/디코딩(=풀기) 할 수 있습니다.
@@ -34,22 +25,20 @@ import datetime
 import hashlib
 
 
-
-
-
+#################################
+##  HTML을 주는 부분             ##
+#################################
 @app.route('/')
-def main():
+def home():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.user.find_one({"id": payload['id']})
-        return render_template('main.html', nickname=user_info["nick"])
+        return render_template('index.html', nickname=user_info["nick"])
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
-
-
 
 
 @app.route('/login')
@@ -58,12 +47,9 @@ def login():
     return render_template('login.html', msg=msg)
 
 
-@app.route('/join')
-def join():
-    return render_template('join.html')
-
-
-
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 
 #################################
@@ -148,36 +134,3 @@ def api_valid():
 
 if __name__ == '__main__':
     app.run()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@app.route('/create')
-def create():
-    return render_template('create.html')
-
-
-@app.route('/reviews')
-def reviews():
-    return render_template('reviews.html')
-
-
-@app.route('/detail')
-def detail():
-    return render_template('detail.html')
-
-
-if __name__ == '__main__':
-    app.run('0.0.0.0', port=5001, debug=True)
