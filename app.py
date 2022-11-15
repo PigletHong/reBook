@@ -1,7 +1,13 @@
 from pymongo import MongoClient
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+import time
+from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify
 import config
 app = Flask(__name__)
+from pymongo import MongoClient
 
 client = MongoClient(config.mongodb_url)
 db = client.dbsparta
