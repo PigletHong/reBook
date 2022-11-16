@@ -7,7 +7,7 @@
 # from bs4 import BeautifulSoup
 # import config
 
-# def getDynamicPage(url):
+# def get_driver(url):
 #     # linux 환경 가상 display 실행
 #     display = Display(visible=0, size=(1920, 1080))
 #     display.start()
@@ -16,13 +16,9 @@
 #     caps["pageLoadStrategy"] = "none"  # Pageload Strategy 설정 변경
 #     chrome_options = webdriver.ChromeOptions()  # 크롬 드라이버 실행
 #     chrome_options.add_argument("headless")  # 크롬 드라이버 창 감추기
-#     # driver = webdriver.Chrome(service=Service(
-#     #     ChromeDriverManager().install()), options=chrome_options)  # 크롬 드라이버 자동 업데이트
 #     driver = webdriver.Chrome(
 #         config.chrome_driver_path, options=chrome_options)  # 크롬 드라이버 업데이트 없이 실행
 #     driver.get(url)
-#     # previous = driver.execute_script("return document.body.scrollHeight")
-#     # interval = 1  # 인터벌 설정
 #     return driver
 
 # =========================================================================
