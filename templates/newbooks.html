@@ -25,13 +25,27 @@
         </div>
       </div>
       <div class="bottom-menu">
-        <p class="menu" onclick="location.href='/'">New Books</p>
+        <p class="menu selected" onclick="location.href='/'">New Books</p>
         <p class="menu" onclick="location.href='/bestseller'">Best Seller</p>
-        <p class="menu selected" onclick="location.href='/reviews'">Reviews</p>
+        <p class="menu" onclick="location.href='/reviews'">Reviews</p>
       </div>
     </div>
-    <h1>new books 페이지</h1>
-    <h3>교보문고 크롤링 데이터가 보여질 자리</h3>
-  <h3>{{ data }}</h3>
+    <section>
+        <div>
+            {% for book in data %}
+                    <div class="mycards">
+                        <div id="cards-box">
+                                <img src="{{ book.img }}" class="card-img-top"/>
+                                <div class="card-body">
+                                    <h5 class="card-title"> {{ book.title }} </h5>
+                                    <p class="card-author">{{ book.author }}</p>
+                                    <p class="card-desc">{{ book.desc }}</p>
+                                    <p class="card-price">{{ book.price }}원</p>
+                                </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    </section>
   </body>
 </html>
