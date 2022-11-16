@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
-url = "https://product.kyobobook.co.kr/new/"
+url = "https://product.kyobobook.co.kr/new/" #기존 신상품 페이지 사용
 
 caps = DesiredCapabilities().CHROME
 caps["pageLoadStrategy"] = "none" #Pageload Strategy 설정 변경
