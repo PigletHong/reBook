@@ -20,3 +20,14 @@ function tagBtnHandler(e) {
     selected = targetSubject;
   }
 }
+
+function writeBtnHandler() {
+  const bookContent = document.getElementsByClassName('book-content').innerHTML;
+  const bookUrl = document.getElementsByClassName('book-url').innerHTML;
+
+  console.log(bookContent, bookUrl);
+  // 예외 처리
+  if(!select){
+  }
+  // ajax call
+}
