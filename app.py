@@ -1,10 +1,7 @@
 from pymongo import MongoClient
-from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify
+from kyoboCrawler import send_bestseller, send_newbooks, send_kyoboBook
 import config
-from bestseller import send_bestseller
-from newbooks import send_newbooks
-from bookInfo import send_kyoboBook
 
 app = Flask(__name__)
 
