@@ -9,7 +9,17 @@
     <link rel="stylesheet" href="../static/css/reset.css" />
     <link rel="stylesheet" href="../static/css/default.css" />
     <link rel="stylesheet" href="../static/css/navigation.css" />
-    <link rel="stylesheet" href="../static/css/newbooks.css" />
+    <link rel="stylesheet" href="../static/css/newbooks.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <script>
+        function logout() {
+            $.removeCookie('mytoken');
+            alert("로그아웃 완료!")
+            window.location.href = '/'
+        }
+      </script>
   </head>
 
   <body>
@@ -19,7 +29,7 @@
           <img class="logo" src="../static/image/rebookLogo.png" />
         </div>
         <div class="icon-box">
-          <img class="icon logoutIcon" src="../static/image/logoutIcon.png" />
+          <img onclick="logout()" class="icon logoutIcon" src="../static/image/logoutIcon.png"/>
           <h3 class="icon-slash">/</h3>
           <img class="icon writeIcon" src="../static/image/writeIcon.png" />
         </div>
