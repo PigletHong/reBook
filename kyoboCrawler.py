@@ -7,22 +7,18 @@
 # from bs4 import BeautifulSoup
 # import config
 
-# def getDynamicPage(url):
+
+# def get_driver(url):
 #     # linux 환경 가상 display 실행
 #     display = Display(visible=0, size=(1920, 1080))
 #     display.start()
-
 #     caps = DesiredCapabilities().CHROME
 #     caps["pageLoadStrategy"] = "none"  # Pageload Strategy 설정 변경
 #     chrome_options = webdriver.ChromeOptions()  # 크롬 드라이버 실행
 #     chrome_options.add_argument("headless")  # 크롬 드라이버 창 감추기
-#     # driver = webdriver.Chrome(service=Service(
-#     #     ChromeDriverManager().install()), options=chrome_options)  # 크롬 드라이버 자동 업데이트
 #     driver = webdriver.Chrome(
 #         config.chrome_driver_path, options=chrome_options)  # 크롬 드라이버 업데이트 없이 실행
 #     driver.get(url)
-#     # previous = driver.execute_script("return document.body.scrollHeight")
-#     # interval = 1  # 인터벌 설정
 #     return driver
 
 # =========================================================================
@@ -81,57 +77,21 @@ def send_kyoboBook(url):
     kyoboBook = get_kyoboBook(url)
     return kyoboBook
 
+# lazy loading img 처리 필요 / db 저장 필요
+
 
 def get_newbooks(url):
     driver = get_driver(url)
     soup = BeautifulSoup(driver.page_source, "html.parser")
     items = soup.find_all("li", attrs={"class": "prod_item"})
     extract = []
-    count = 0
-
     try:
-        for item in items:
-            # item 중에 20개만 추출
-            if count < 20:
-                img = item.find("img")["src"]
-                title = item.find("span", attrs={"class": "prod_name"}).text
-                author = item.find("span", attrs={"class": "prod_author"}).text
-                price = item.find("span", attrs={"class": "val"}).text
-                desc = item.find(
-                    "p", attrs={"class": "prod_introduction"}).text
-                star = item.find(
-                    "span", attrs={"class": "review_klover_text font_size_xxs"}).text
-
-                doc = {
-                    'title': title,
-                    'price': price,
-                    'author': author,
-                    'img': img,
-                    'desc': desc,
-                    'star': star
-                }
-
-                extract.append(doc)
-                count = count + 1
-    except Exception:
-        pass
-    return extract
-
-
-def send_newbooks():
-    url = "https://product.kyobobook.co.kr/new/"  # 기존 신상품 페이지 사용
-    newbook = get_newbooks(url)
-    return newbook
-
-
-def get_bestseller(url):
-    driver = get_driver(url)
-    soup = BeautifulSoup(driver.page_source, "html.parser")
-    items = soup.find_all("li", attrs={"class": "prod_item"})
-    extract = []
-    try:
-        for item in items:
+        for idx, item in enumerate(items):
+            # 20개 아이템만 크롤링
+            if idx >= 20:
+                break
             img = item.find("img")["src"]
+            url = item.find("a", attrs={"class": "prod_info"})['href']
             title = item.find("span", attrs={"class": "prod_name"}).text
             author = item.find("span", attrs={"class": "prod_author"}).text
             price = item.find("span", attrs={"class": "val"}).text
@@ -144,16 +104,57 @@ def get_bestseller(url):
                 'author': author,
                 'img': img,
                 'desc': desc,
-                'star': star
+                'star': star,
+                'url': url,
             }
             extract.append(doc)
     except Exception:
         pass
+    print('신상품 크롤링 완료!')
+    return extract
+
+
+def send_newbooks():
+    url = "https://product.kyobobook.co.kr/new/"  # 기존 신상품 페이지 사용
+    newbook = get_newbooks(url)
+    return newbook
+
+# lazy loading img 처리 필요 / db 저장 필요
+
+
+def get_bestseller(url):
+    driver = get_driver(url)
+    soup = BeautifulSoup(driver.page_source, "html.parser")
+    items = soup.find_all("li", attrs={"class": "prod_item"})
+    extract = []
+    try:
+        for item in items:
+            img = item.find("img")["src"]
+            url = item.find("a", attrs={"class": "prod_info"})['href']
+            title = item.find("span", attrs={"class": "prod_name"}).text
+            author = item.find("span", attrs={"class": "prod_author"}).text
+            price = item.find("span", attrs={"class": "val"}).text
+            desc = item.find("p", attrs={"class": "prod_introduction"}).text
+            star = item.find(
+                "span", attrs={"class": "review_klover_text font_size_xxs"}).text
+            doc = {
+                'title': title,
+                'price': price,
+                'author': author,
+                'img': img,
+                'desc': desc,
+                'star': star,
+                'url': url,
+            }
+            extract.append(doc)
+    except Exception:
+        pass
+    print('베스트셀러 크롤링 완료!')
     return extract
 
 
 def send_bestseller():
     # 일간에서 주간 베스트셀러로 URL로 변경
-    url = "https://product.kyobobook.co.kr/bestseller/online?period=002"
+    url = "https://product.kyobobook.co.kr/bestseller/total?period=002"  # 종합주간베스트
     bestseller = get_bestseller(url)
     return bestseller
