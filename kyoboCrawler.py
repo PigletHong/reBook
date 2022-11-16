@@ -128,7 +128,7 @@ def get_bestseller(url):
     items = soup.find_all("li", attrs={"class": "prod_item"})
     extract = []
     try:
-        for item in items:
+        for idx, item in enumerate(items):
             img = item.find("img")["src"]
             url = item.find("a", attrs={"class": "prod_info"})['href']
             title = item.find("span", attrs={"class": "prod_name"}).text
@@ -138,6 +138,7 @@ def get_bestseller(url):
             star = item.find(
                 "span", attrs={"class": "review_klover_text font_size_xxs"}).text
             doc = {
+                'rank': idx+1,
                 'title': title,
                 'price': price,
                 'author': author,
