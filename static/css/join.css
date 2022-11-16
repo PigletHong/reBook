@@ -1,0 +1,119 @@
+
+.total_main {
+
+           display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+           margin-top: 60px;
+
+
+  /*!*display: inline-block;*!*/
+/* 안에 가운데 정렬 */
+}
+
+
+
+
+
+
+
+.rebook_log{
+  margin-top: -900px;
+}
+
+
+
+.total_login_object {
+  margin-top: 50px;
+   text-align: center;
+}
+
+
+.button_login{
+  font-size : 18px;
+  color: black;
+  text-align: center;
+  background-color: #ffdc9f;
+  padding: 10px 30px 10px 30px;
+
+}
+
+
+.name_login{
+  font-size : 90px;
+  margin-bottom: 50px;
+
+  text-align: center;
+
+   font-weight: bold;
+  color: #FFDC9F;
+
+
+}
+
+.name_id{
+  font-size: 20px;
+  margin-bottom: 4px;
+  margin-right: 588px;
+}
+
+
+
+
+.id_input_box{
+   padding: 10px 440px 10px 10px;
+  margin-bottom: 30px;
+  background-color:transparent;
+  outline: solid 1px white;
+
+}
+
+
+.name_input_box{
+   padding: 10px 440px 10px 10px;
+}
+
+
+
+.name_password{
+  font-size: 20px;
+    margin-bottom: 4px;
+  margin-right: 515px;
+
+}
+
+
+
+.name_name{
+     font-size: 20px;
+  margin-bottom: 4px;
+  margin-right: 550px;
+}
+
+
+.name_Name{
+  font-size: 20px;
+    margin-bottom: 4px;
+}
+
+
+.password_input_box{
+    padding: 10px 440px 10px 10px;
+  background-color:transparent;
+  outline: solid 1px white;
+}
+
+
+
+
+
+
+
+.box_join{
+  margin-left: 48px;
+  font-size: 19px;
+  margin-top: -15px;
+}
+
+
