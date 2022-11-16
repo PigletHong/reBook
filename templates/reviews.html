@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../static/css/default.css" />
     <link rel="stylesheet" href="../static/css/navigation.css" />
     <link rel="stylesheet" href="../static/css/reviews.css" />
+
+    <script src="../static/js/reviews.js"></script>
   </head>
   <body>
     <div class="topbar">
@@ -27,6 +29,48 @@
         <p class="menu" onclick="location.href='/'">New Books</p>
         <p class="menu" onclick="location.href='/bestseller'">Best Seller</p>
         <p class="menu selected" onclick="location.href='/reviews'">Reviews</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="search-box">
+        <select class="select-search">
+          <option id="title" value="title">책이름</option>
+          <option id="content" value="content">내용</option>
+          <option id="author" value="author">저자</option>
+        </select>
+        <input
+          class="search-input"
+          type="text"
+          placeholder="키워드를 입력해주세요"
+          max-width="255"
+        />
+        <button class="search-btn">
+          <img
+            class="search-icon"
+            src="../static/image/searchIcon.png"
+            width="18px"
+          />
+        </button>
+      </div>
+      <div class="reviews">
+        <div class="review-card">
+          <img
+            class="review-img"
+            src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9788959897094.jpg"
+          />
+          <div class="text-area">
+            <h3 class="review-title">트렌드 코리아 2023</h3>
+            <p class="review-desc">
+              항상 트렌드 코리아를 읽어 왔었는데 2023은 조금 더 특별했다. 그
+              이유는 2022년은 코로나가 끝나가는 기대감으로 모두가 뉴노멀을
+              외쳤기 때문이다...
+            </p>
+            <div class="detail-info">
+              <p class="review-createdBy">2022-11-15</p>
+              <p class="review-author">신원</p>
+            <div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
