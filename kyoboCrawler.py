@@ -2,7 +2,6 @@
 # linux 버전
 # =========================================================================
 # from selenium import webdriver
-# from selenium.webdriver.chrome.service import Service
 # from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 # from pyvirtualdisplay import Display
 # from bs4 import BeautifulSoup
@@ -29,14 +28,12 @@
 # =========================================================================
 # windows 버전
 # =========================================================================
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from bs4 import BeautifulSoup
 
 
-def getDynamicPage(url):
+def get_driver(url):
     caps = DesiredCapabilities().CHROME
     caps["pageLoadStrategy"] = "none"  # Pageload Strategy 설정 변경
     chrome_options = webdriver.ChromeOptions()  # 크롬 드라이버 실행
@@ -51,8 +48,8 @@ def getDynamicPage(url):
 # =========================================================================
 
 
-def send_kyoboBook(url):
-    driver = getDynamicPage(url)
+def get_kyoboBook(url):
+    driver = get_driver(url)
     soup = BeautifulSoup(driver.page_source, "html.parser")
     title = soup.select_one(
         'div.auto_overflow_contents > div > h1 > span').getText()
@@ -78,3 +75,85 @@ def send_kyoboBook(url):
         'pubDate': pubDate,
         'desc': desc,
     }
+
+
+def send_kyoboBook(url):
+    kyoboBook = get_kyoboBook(url)
+    return kyoboBook
+
+
+def get_newbooks(url):
+    driver = get_driver(url)
+    soup = BeautifulSoup(driver.page_source, "html.parser")
+    items = soup.find_all("li", attrs={"class": "prod_item"})
+    extract = []
+    count = 0
+
+    try:
+        for item in items:
+            # item 중에 20개만 추출
+            if count < 20:
+                img = item.find("img")["src"]
+                title = item.find("span", attrs={"class": "prod_name"}).text
+                author = item.find("span", attrs={"class": "prod_author"}).text
+                price = item.find("span", attrs={"class": "val"}).text
+                desc = item.find(
+                    "p", attrs={"class": "prod_introduction"}).text
+                star = item.find(
+                    "span", attrs={"class": "review_klover_text font_size_xxs"}).text
+
+                doc = {
+                    'title': title,
+                    'price': price,
+                    'author': author,
+                    'img': img,
+                    'desc': desc,
+                    'star': star
+                }
+
+                extract.append(doc)
+                count = count + 1
+    except Exception:
+        pass
+    return extract
+
+
+def send_newbooks():
+    url = "https://product.kyobobook.co.kr/new/"  # 기존 신상품 페이지 사용
+    newbook = get_newbooks(url)
+    return newbook
+
+
+def get_bestseller(url):
+    driver = get_driver(url)
+    soup = BeautifulSoup(driver.page_source, "html.parser")
+    items = soup.find_all("li", attrs={"class": "prod_item"})
+    extract = []
+    try:
+        for item in items:
+            img = item.find("img")["src"]
+            title = item.find("span", attrs={"class": "prod_name"}).text
+            author = item.find("span", attrs={"class": "prod_author"}).text
+            price = item.find("span", attrs={"class": "val"}).text
+            desc = item.find("p", attrs={"class": "prod_introduction"}).text
+            star = item.find(
+                "span", attrs={"class": "review_klover_text font_size_xxs"}).text
+            doc = {
+                'title': title,
+                'price': price,
+                'author': author,
+                'img': img,
+                'desc': desc,
+                'star': star
+            }
+            extract.append(doc)
+    except Exception:
+        pass
+    return extract
+
+
+def send_bestseller():
+    # 일간에서 주간 베스트셀러로 URL로 변경
+    url = "https://product.kyobobook.co.kr/bestseller/online?period=002"
+    bestseller = get_bestseller(url)
+    return bestseller
