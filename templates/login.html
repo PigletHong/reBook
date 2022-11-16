@@ -1,17 +1,74 @@
 <!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>re:book</title>
 
-    <link rel="stylesheet" href="../static/css/reset.css" />
-    <link rel="stylesheet" href="../static/css/default.css" />
-    <link rel="stylesheet" href="../static/css/login.css" />
-  </head>
+    <link rel="stylesheet" href="../static/css/reset.css"/>
+    <link rel="stylesheet" href="../static/css/default.css"/>
+    <link rel="stylesheet" href="../static/css/login.css"/>
+    <script src="../static/js/login.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script>
+        {% if msg %}
+            alert("{{ msg }}")
+        {% endif %}
+
+        function login() {
+            $.ajax({
+                type: "POST",
+                url: "/api/login",
+                data: {id_give: $('#userId').val(), pw_give: $('#userPwd').val()},
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        $.cookie('mytoken', response['token']);
+
+                        alert('로그인 완료!')
+                        window.location.href = '/'
+                    } else {
+                        alert(response['msg'])
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+
+
+
   <body>
-    <h1>로그인 페이지</h1>
-    <h3>로그인 폼이 들어갈 자리</h3>
+
+  <div class="total_main">
+      <div class="total_login_object">
+          <h1 class="name_login">Login</h1>
+          <p class="name_id">Id</p>
+          <input class="id_input_box" type="text" id="userId">
+          <p class="name_password">Password</p>
+          <input class="password_input_box" type="password" id="userPwd">
+
+
+          <div class="box_login_join">
+              <div>
+                  <button class="button_login" onclick="login()" style='cursor:pointer'>Login</button>
+              </div>
+              <p class="box_join" onclick="location.href='/join'" style='cursor:pointer'>Join</p>
+          </div>
+      </div>
+  </div>
+  </div>
+
+
+     <div class="rebook_log">
+         <div class="topbar">
+             <div class="top-menu">
+                 <div class="logo-box" onclick="location.href='/'">
+                     <img class="logo" src="../static/image/rebookLogo.png"/>
+                 </div>
+             </div>
+         </div>
+     </div>
   </body>
 </html>
