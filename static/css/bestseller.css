@@ -1,16 +1,19 @@
 .mycards {
     background-color: #3F3E3E;
-    margin: 100px 800px 100px 800px;
+    margin: 100px 550px 100px 550px;
     border-radius: 30px;
     display: block;
     overflow: hidden;
     letter-spacing: 0.5px;
+    text-overflow-ellipsis: hidden;
 }
 
 .card-img-top {
-    padding: 40px 0px 50px 40px;
+
     float: left;
-    position: absolute;
+    padding: 50px 0px 50px 40px;
+    height: auto;
+    /*display: block;*/
 }
 
 .card-body {
@@ -31,19 +34,26 @@
 }
 
 .card-author {
-    font-size: 18px;
+    font-size: 17px;
     padding: 0px 0px 30px 50px;
 }
 
 .card-desc {
-    font-size: 18px;
-    padding: 0px 0px 30px 50px;
-    line-height: 27px;
+    font-size: 17px;
+    display: block; /* 인터넷 익스플로러 호환 */
+    display: -webkit-box;
+    overflow: hidden;
+    line-height: 1.7;
+    max-height: 3.4em; /* 인터넷 익스플로러 호환 */
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis; /* CSS4에서 추가될 말줄임표 사용자 정의 */
+    padding: 0px 0px 30px 40px;
 }
 
 .card-price {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
     color: #ffdc9f;
-    margin: 20px 8px 20px 0px;
+    margin: 40px 8px 20px 0px;
 }
