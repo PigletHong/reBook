@@ -45,9 +45,8 @@ function show_reviews(res) {
     const id = reviews[i]['_id'];
     const content = reviews[i]['content'];
     const pubDate = reviews[i]['pubDate'];
-    const userId = "신원";
+    const username = reviews[i]['username'];
     // const tag = reviews[i]['tag'];
-    // const userId = reviews[i]['userId'];
     const temp_html = `
       <div class="review-card" id="${id}">
         <img
@@ -61,7 +60,7 @@ function show_reviews(res) {
           </p>
           <div class="detail-info">
             <p class="review-createdBy">${pubDate}</p>
-            <p class="review-author">${userId}</p>
+            <p class="review-author">${username}</p>
           <div>
         </div>
       </div>

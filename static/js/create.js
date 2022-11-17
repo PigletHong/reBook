@@ -21,16 +21,27 @@ function tagBtnHandler(e) {
   }
 }
 
+function getUsername() {
+  $.ajax({
+    type: "GET",
+    url: "/api/token",
+    data: {},
+    success: function (response) {
+      return response['name'];
+    }
+  });
+}
+
 function writeBtnHandler(event) {
   const writeBtn = event.target;
   const bookUrl = document.querySelector('.book-url').value;
   const bookContent = document.querySelector('.book-content').value;
+  const userName = getUsername();
   
   // 예외 처리
   if(bookUrl.includes('product.kyobobook.co.kr/detail/') && bookContent && selected ){
     // 한번만 눌리도록 버튼 disabled 처리
     writeBtn.setAttribute("disabled", "disalbed");
-    // user id 값 추가 필요
     $.ajax({
       type: 'POST',
       url: '/api/review',
@@ -38,6 +49,7 @@ function writeBtnHandler(event) {
         url_give: bookUrl,
         content_give: bookContent,
         tag_give: selected,
+        name_give: userName
       },
       success: function (response) {
         alert(response['msg']);

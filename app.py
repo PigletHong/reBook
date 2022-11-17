@@ -84,6 +84,7 @@ def create_review():
     url_receive = request.form['url_give']
     content_receive = request.form['content_give']
     tag_receive = request.form['tag_give']
+    name_receive = request.form['name_give']
 
     bookInfo = send_kyoboBook(url_receive)
     # 현재 시간 포멧 2022-11-17
@@ -94,6 +95,7 @@ def create_review():
         'content': content_receive,
         'tag': tag_receive,
         'bookInfo': bookInfo,
+        'username': name_receive,
         'pubDate': pubDate,
     }
 
@@ -114,7 +116,7 @@ def api_login():
         payload = {
             'id': id_receive,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=120),
-            'name': result['name'] #// 토큰에 이름값 추가
+            'name': result['name']  # // 토큰에 이름값 추가
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
