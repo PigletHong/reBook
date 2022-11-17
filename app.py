@@ -1,14 +1,14 @@
+from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
+from kyoboCrawler import send_bestseller, send_newbooks, send_kyoboBook
 import config
 import hashlib
 import jwt
 import datetime
-from bestseller import send_bestseller
-from newbooks import send_newbooks
 
 SECRET_KEY = 'HONG'
 app = Flask(__name__)
-from pymongo import MongoClient
+
 client = MongoClient(config.mongodb_url)
 db = client.rebook
 
@@ -96,6 +96,30 @@ def reviews():
 @app.route('/detail')
 def detail():
     return render_template('detail.html')
+
+# ============================================
+# api call
+# ============================================
+
+
+@app.route('/api/review')
+def create_review():
+    url = request.form['url']
+    content = request.form['content']
+    tag = request.form['tag']
+
+    bookInfo = send_kyoboBook(url)
+
+    doc = {
+        'url': url,
+        'content': content,
+        'tag': tag,
+        'bookInfo': bookInfo,
+    }
+
+    db.review.insert_one(doc)
+
+    return jsonify({'msg': '리뷰작성 완료!'})
 
 
 if __name__ == '__main__':
