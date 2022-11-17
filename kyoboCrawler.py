@@ -6,8 +6,8 @@
 # from pyvirtualdisplay import Display
 # from bs4 import BeautifulSoup
 # import config
-
-
+#
+#
 # def get_driver(url):
 #     # linux 환경 가상 display 실행
 #     display = Display(visible=0, size=(1920, 1080))
