@@ -48,7 +48,7 @@ function token_valid() {
     success: function (response) {
       const done = response['result'] === 'success' ? true : false;
       if(!done){
-        window.location.href = '/reviews';
+        window.location.href = '/';
       }
     }
   });
