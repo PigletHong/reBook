@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>re:book</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <link rel="stylesheet" href="../static/css/reset.css"/>
+    <link rel="stylesheet" href="../static/default.css"/>
+    <link rel="stylesheet" href="../static/css/navigation.css"/>
+    <link rel="stylesheet" href="../static/detail.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    <style>
+        {#책정보 이름#}
+        .book_info {
+            color: white;
+            border-radius: 13px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+
+        {#책정보 박스#}
+        .bk_info {
+
+            color: white;
+            background-color: #3F3E3E;
+            border-style: solid;
+            border-color: black;
+            border-radius: 13px;
+            width: 800px;
+            height: 200px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        {#리뷰칸 수정 및 삭제 버튼 위치#}
+        .review_add_icon {
+            color: white;
+            top: 170px;
+            position: absolute;
+            right: 75px;
+
+
+        }
+
+        {#리뷰칸 수정 및 삭제 버튼 위치#}
+        .review {
+            color: white;
+            border-radius: 13px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        {#리뷰칸 박스 및 글자#}
+        .fill_review {
+            color: white;
+            background-color: #3F3E3E;
+            border-style: solid;
+            border-color: black;
+            border-radius: 13px;
+            width: 800px;
+            height: 200px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            word-break: keep-all;
+        }
+
+
+        .book_info {
+            height: 900px;
+            width: 2300px;
+
+
+        }
+
+
+        .img-fluid rounded-start {
+            width: 300px;
+            height: 150px;
+            object-fit: cover;
+
+        }
+
+        .col-md-4 img {
+            height: 200px;
+            margin-left: -20px;
+            width: 220px;
+        }
+
+
+        .row.g-0 {
+            height: 900px;
+            display: flex;
+        }
+
+        .col-md-4 {
+            width: 250px;
+
+        }
+
+
+        .total_information {
+            margin-top: 300px;
+            display: flex;
+            justify-content: center;
+
+        }
+
+
+        .box_card22 {
+            height: 700px;
+        }
+
+
+    </style>
+
+    <script>
+        {#리뷰등록___삭제#}
+
+        function review_enroll_icon() { {# 임의 리뷰 저장 #}
+            alert("리뷰작성")
+        }
+
+
+        function review_del_icon() {
+            alert('리뷰삭제')
+        }
+
+        function review_edit_icon() {
+            alert('리뷰수정')
+        }
+
+        {#댓글등록#}
+        $(document).ready(function () {
+            bookinfo();
+        });
+
+
+        function bookinfo() {
+            $.ajax({
+                type: 'GET',
+                url: '/api/detail',
+                data: {},
+                success: function (response) {
+                    let rows = response['bookinfo']
+                    for (let i = 0; i < rows.length; i++) {
+                        let content = rows[i]['content']
+                        let img = rows[i]['img']
+                        let title = rows[i]['title']
+                        let author = rows[i]['author']
+                        let publisher = rows[i]['publisher']
+                        let pubDate = rows[i]['pubDate']
+                        let desc = rows[i]['desc']
+                        let price = rows[i]['price']
+
+                        let temp_html = `<div class="all">
+    <div class="review_add_icon">
+
+        <img  class="button_delete"   src="../static/image/deleteIcon.png" class="del" onclick="review_del_icon()"
+             style='cursor:pointer;'>
+    </div>
+
+
+  <div class="total_information">
+    <div class="book_info">
+        <span style="color: #FFDC9F">Book Informaion</span>
+        <div class="box_card" style="max-width: 1200px; height: 200px; background-color: #3F3E3E;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img class="img" src="${img}"  alt="">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h1 class="title"> ${title}</h1>
+              <h2 class="author", class="publisher", class="pubdate"> ${author},  ${publisher},  ${pubDate}</h2>
+            <p class="desc">${desc}</p>
+             <p class="price">${price}</p>
+            <p class="card-text"><small class="text-muted"></small></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="review">
+      <div class="all">
+   <div class="re_book_box">
+    <div class="book_info">
+        <span style="color: #FFDC9F">Re:book</span>
+        <div class="box_card22" style="max-width: 1200px; height: 200px; background-color: #3F3E3E;">
+      <div class="row g-0">
+
+        <div class="col-md-8">
+          <div class="card-body">
+            <p class="card-text" class="content"> ${content} </p>
+            <p class="card-text"><small class="text-muted"></small></p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+      </div>
+
+
+        </div>
+        </div>
+    </div>
+  </div>
+</div>
+`
+
+                        $('#all').append(temp_html)
+                    }
+                }
+            });
+        }
+
+
+        function re_comment() {
+            alert('수정완료')
+        }
+
+        function del() {
+            alert('삭제완료')
+        }
+
+        function comment_edit() {
+            alert('댓글수정완료')
+        }
+
+        function comment_del() {
+            alert('댓글삭제완료')
+        }
+
+
+    </script>
+
+</head>
+
+
+<body style="background: black">
+<div class="topbar">
+    <div class="top-menu">
+        <div class="logo-box" onclick="location.href='/'">
+            <img class="logo" src="../static/image/rebookLogo.png"/>
+        </div>
+        <div class="icon-box">
+            <img class="icon logoutIcon" src="../static/image/logoutIcon.png"/>
+            <h3 class="icon-slash">/</h3>
+            <img class="icon writeIcon" src="../static/image/writeIcon.png"/>
+        </div>
+    </div>
+    <div class="bottom-menu">
+        <p class="menu" onclick="location.href='/'">New Books</p>
+        <p class="menu" onclick="location.href='/bestseller'">Best Seller</p>
+        <p class="menu selected" onclick="location.href='/reviews'">Reviews</p>
+    </div>
+</div>
+
+
+<div class="all">
+    <div class="review_add_icon">
+
+        <img class="button_delete" src="../static/image/deleteIcon.png" class="del" onclick="review_del_icon()"
+             style='cursor:pointer;'>
+    </div>
+
+
+    <div class="total_information">
+        <div class="book_info">
+            <span style="color: #FFDC9F">Book Informaion</span>
+            <div class="box_card" style="max-width: 1200px; height: 200px; background-color: #3F3E3E;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="img" src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791192641003.jpg"
+                             alt="단단한 자존감을 갖고 싶은 10대에게 대표 이미지">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h1 class="title"> title</h1>
+                            <h2 class="author" , class="publisher" , class="pubdate"> author publisher pubdate</h2>
+                            <p class="desc">“학창 시절이야말로 가장 좋은 때.”라고들 말하지만, 이 시대 수많은 청소년들은 무한 경쟁을 부추기는 입시 위주의 교육을 받으며 자신은
+                                누구이며 무엇을 잘하는지조차 생각해 볼 틈 없이 치열하게 살고 있다. 여기에 인공 지능, 빅 데이터, 생명 공학, 우주 공학 등이 주도할 미래 사회에 대한
+                                불안감까지 더해져, 청소년들이 받는 스트레스는 점점 더 커지고 있다.</p>
+                            <p class="price">price</p>
+                            <p class="card-text"><small class="text-muted"></small></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="review">
+                <div class="all">
+                    <div class="re_book_box">
+                        <div class="book_info">
+                            <span style="color: #FFDC9F">Re:book</span>
+                            <div class="box_card22"
+                                 style="max-width: 1200px; height: 200px; background-color: #3F3E3E;">
+                                <div class="row g-0">
+
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <p class="card-text" class="content"> “학창 시절이야말로 가장 좋은 때.”라고들 말하지만, 이 시대 수많은
+                                                청소년들은 무한 경쟁을 부추기는 입시 위주의 교육을 받으며 자신은 누구이며 무엇을 잘하는지조차 생각해 볼 틈 없이 치열하게 살고
+                                                있다. 여기에 인공 지능, 빅 데이터, 생명 공학, 우주 공학 등이 주도할 미래 사회에 대한 불안감까지 더해져, 청소년들이 받는
+                                                스트레스는 점점 더 커지고 있다.
+                                            </p>
+                                            <p class="card-text"><small class="text-muted"></small></p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

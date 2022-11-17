@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>re:book</title>
+
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <link rel="stylesheet" href="../static/css/default.css" />
+    <link rel="stylesheet" href="../static/css/navigation.css" />
+    <link rel="stylesheet" href="../static/css/bestseller.css" />
+{#    <script src = "../static/js/bestseller.js"></script>#}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script>
+          {% for data in data %}
+              let temp_html = `<div class="col">
+                        <div class="card h-100">
+                            <img src="{{data.img}}"
+                                 class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">{{data.title}}</h5>
+                                <p class="card-author">{{data.author}}</p>
+                                <p class="card-desc">{{data.desc}}</p>
+                                <p class="card-price">{{data.price}}</p>
+                            </div>
+                        </div>
+                        </div>`
+              $('#cards-box').append(temp_html)
+          {% endfor %}
+      </script>
+
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="top-menu">
+        <div class="logo-box" onclick="location.href='/'">
+          <img class="logo" src="../static/image/rebookLogo.png" />
+        </div>
+        <div class="icon-box">
+          <img class="icon logoutIcon" src="../static/image/logoutIcon.png" />
+          <h3 class="icon-slash">/</h3>
+          <img class="icon writeIcon" src="../static/image/writeIcon.png" />
+        </div>
+      </div>
+      <div class="bottom-menu">
+        <p class="menu" onclick="location.href='/'">New Books</p>
+        <p class="menu" onclick="location.href='/bestseller'">Best Seller</p>
+        <p class="menu selected" onclick="location.href='/reviews'">Reviews</p>
+      </div>
+    </div>
+    <section>
+        <div>
+            {% for book in data %}
+                <div class="mycards">
+                    <div id="cards-box">
+                        <img src="{{ book.img }}" class="card-img-top"/>
+                        <div class="card-body">
+                            <h5 class="card-title"> {{ book.title }} </h5>
+                            <p class="card-author">{{ book.author }}</p>
+                            <p class="card-desc">{{ book.desc }}</p>
+                            <p class="card-price">{{ book.price }}원</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+
+
+{#            {% for data in data %}#}
+{#                <h3> {{ data.title }} </h3>#}
+{#                <h3>{{ data.desc }}</h3>#}
+{#                <h3>{{ data.price }}</h3>#}
+{#                <h3>{{ data.author }}</h3>#}
+{#                <h3> {{ data.img }}</h3>#}
+{#            {% endfor %}#}
+        </div>
+    </section>
+  </body>
+</html>
