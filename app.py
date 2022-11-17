@@ -1,7 +1,6 @@
 from pymongo import MongoClient
 from flask import Flask, render_template, request, jsonify
 from kyoboCrawler import send_bestseller, send_newbooks, send_kyoboBook
-import datetime
 import config
 import hashlib
 import jwt
@@ -103,23 +102,19 @@ def detail():
 # ============================================
 
 
-@app.route('/api/review', methods=["POST"])
+@app.route('/api/review')
 def create_review():
-    # id_receive = request.form['id_give']
-    url_receive = request.form['url_give']
-    content_receive = request.form['content_give']
-    tag_receive = request.form['tag_give']
+    url = request.form['url']
+    content = request.form['content']
+    tag = request.form['tag']
 
-    bookInfo = send_kyoboBook(url_receive)
-    # 현재 시간 포멧 2022-11-17
-    pubDate = datetime.datetime.now().strftime("%Y-%m-%d")
+    bookInfo = send_kyoboBook(url)
 
     doc = {
-        'url': url_receive,
-        'content': content_receive,
-        'tag': tag_receive,
+        'url': url,
+        'content': content,
+        'tag': tag,
         'bookInfo': bookInfo,
-        'pubDate': pubDate,
     }
 
     db.review.insert_one(doc)
