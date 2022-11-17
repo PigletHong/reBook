@@ -1,43 +1,43 @@
 # =========================================================================
 # linux 버전
 # =========================================================================
-# from selenium import webdriver
-# from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-# from pyvirtualdisplay import Display
-# from bs4 import BeautifulSoup
-# import config
-
-
-# def get_driver(url):
-#     # linux 환경 가상 display 실행
-#     display = Display(visible=0, size=(1920, 1080))
-#     display.start()
-#     caps = DesiredCapabilities().CHROME
-#     caps["pageLoadStrategy"] = "none"  # Pageload Strategy 설정 변경
-#     chrome_options = webdriver.ChromeOptions()  # 크롬 드라이버 실행
-#     chrome_options.add_argument("headless")  # 크롬 드라이버 창 감추기
-#     driver = webdriver.Chrome(
-#         config.chrome_driver_path, options=chrome_options)  # 크롬 드라이버 업데이트 없이 실행
-#     driver.get(url)
-#     return driver
-
-# =========================================================================
-# windows 버전
-# =========================================================================
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from pyvirtualdisplay import Display
 from bs4 import BeautifulSoup
+import config
 
 
 def get_driver(url):
+    # linux 환경 가상 display 실행
+    display = Display(visible=0, size=(1920, 1080))
+    display.start()
     caps = DesiredCapabilities().CHROME
     caps["pageLoadStrategy"] = "none"  # Pageload Strategy 설정 변경
     chrome_options = webdriver.ChromeOptions()  # 크롬 드라이버 실행
     chrome_options.add_argument("headless")  # 크롬 드라이버 창 감추기
-    driver = webdriver.Chrome(options=chrome_options)  # 크롬 드라이버 업데이트 없이 실행
+    driver = webdriver.Chrome(
+        config.chrome_driver_path, options=chrome_options)  # 크롬 드라이버 업데이트 없이 실행
     driver.get(url)
-
     return driver
+
+# =========================================================================
+# windows 버전
+# =========================================================================
+# from selenium import webdriver
+# from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+# from bs4 import BeautifulSoup
+
+
+# def get_driver(url):
+#     caps = DesiredCapabilities().CHROME
+#     caps["pageLoadStrategy"] = "none"  # Pageload Strategy 설정 변경
+#     chrome_options = webdriver.ChromeOptions()  # 크롬 드라이버 실행
+#     chrome_options.add_argument("headless")  # 크롬 드라이버 창 감추기
+#     driver = webdriver.Chrome(options=chrome_options)  # 크롬 드라이버 업데이트 없이 실행
+#     driver.get(url)
+
+#     return driver
 
 # =========================================================================
 # 공용 함수

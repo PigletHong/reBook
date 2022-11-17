@@ -1,7 +1,6 @@
 // same with JQuery $(document).ready()
 document.addEventListener("DOMContentLoaded", function(event) {
   token_valid();
-  writeBtnHandler();
 });
 
 let selected;
@@ -28,14 +27,17 @@ function tagBtnHandler(e) {
 }
 
 function getUsername() {
+  let username;
   $.ajax({
     type: "GET",
     url: "/api/token",
+    async: false,
     data: {},
     success: function (response) {
-      return response['name'];
+      username = response.name
     }
   });
+  return username;
 }
 
 function token_valid() {
@@ -56,7 +58,8 @@ function writeBtnHandler(event) {
   const writeBtn = event.target;
   const bookUrl = document.querySelector('.book-url').value;
   const bookContent = document.querySelector('.book-content').value;
-  const userName = getUsername();
+  const username = getUsername();
+  // console.log(userName);
   
   // 예외 처리
   if(bookUrl.includes('product.kyobobook.co.kr/detail/') && bookContent && selected ){
@@ -69,7 +72,7 @@ function writeBtnHandler(event) {
         url_give: bookUrl,
         content_give: bookContent,
         tag_give: selected,
-        name_give: userName
+        name_give: username
       },
       success: function (response) {
         alert(response['msg']);
