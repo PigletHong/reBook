@@ -57,6 +57,12 @@ def detail():
 # ============================================
 
 
+@app.route('/api/review/', methods=["GET"])
+def get_review():
+    review_list = list(db.review.find({}, {'_id': False}))
+    return jsonify({'reviews': review_list})
+
+
 @app.route('/api/review', methods=["POST"])
 def create_review():
     # id_receive = request.form['id_give']
