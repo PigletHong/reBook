@@ -14,13 +14,14 @@ function show_reviews() {
       for(let i=0; i<reviews.length; i++){
         const bookImg = reviews[i]['bookInfo']['img'];
         const bookTitle = reviews[i]['bookInfo']['title'];
+        const id = reviews[i]['_id'];
         const content = reviews[i]['content'];
         const pubDate = reviews[i]['pubDate'];
         const userId = "신원";
         // const tag = reviews[i]['tag'];
         // const userId = reviews[i]['userId'];
         const temp_html = `
-          <div class="review-card">
+          <div class="review-card" id="${id}">
             <img
               class="review-img"
               src="${bookImg}"
