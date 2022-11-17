@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-      <meta charset="UTF-8"/>
-      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-      <title>re:book</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>re:book</title>
 
-      <link rel="stylesheet" href="../static/css/reset.css"/>
-      <link rel="stylesheet" href="../static/css/default.css"/>
-      <link rel="stylesheet" href="../static/css/navigation.css"/>
-      <link rel="stylesheet" href="../static/css/newbooks.css"/>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-      <script src="../static/js/loginout.js"></script>
-      <meta property="og:title" content="Re:book" />
-      <meta property="og:description" content="덮은 책도 다시 보자" />
-      <meta property="og:image" content="../static/image/ogimage.jpg" />
-
+    <link rel="stylesheet" href="../static/css/reset.css" />
+    <link rel="stylesheet" href="../static/css/default.css" />
+    <link rel="stylesheet" href="../static/css/navigation.css" />
+    <link rel="stylesheet" href="../static/css/newbooks.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script src="../static/js/loginout.js"></script>
+    <meta property="og:title" content="Re:book" />
+    <meta property="og:description" content="덮은 책도 다시 보자" />
+    <meta property="og:image" content="../static/image/ogimage.jpg" />
   </head>
 
   <body>
@@ -26,15 +25,23 @@
           <img class="logo" src="../static/image/rebookLogo.png" />
         </div>
         <div class="icon-box" id="icon-box">
-{#          <img onclick="logout()" class="icon logoutIcon" src="../static/image/logoutIcon.png"/>#}
-{#          <h3 class="icon-slash">/</h3>#}
-{#          <img class="icon writeIcon" src="../static/image/writeIcon.png" />#}
+          {#
+          <img
+            onclick="logout()"
+            class="icon logoutIcon"
+            src="../static/image/logoutIcon.png"
+          />#} {#
+          <h3 class="icon-slash">/</h3>
+          #} {#
+          <img class="icon writeIcon" src="../static/image/writeIcon.png" />#}
         </div>
       </div>
       <div class="bottom-menu">
-        <p class="menu selected" onclick="location.href='/'">New Books</p>
+        <p class="menu" onclick="location.href='/'">Reviews</p>
+        <p class="menu selected" onclick="location.href='/newbooks'">
+          New Books
+        </p>
         <p class="menu" onclick="location.href='/bestseller'">Best Seller</p>
-        <p class="menu" onclick="location.href='/reviews'">Reviews</p>
       </div>
     </div>
     <section>

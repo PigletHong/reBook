@@ -14,6 +14,11 @@ db = client.rebook
 
 
 @app.route('/')
+def reviews():
+    return render_template('reviews.html')
+
+
+@app.route('/newbooks')
 def newbooks():
     data = send_newbooks()
     # print(data)
@@ -40,11 +45,6 @@ def join():
 @app.route('/create')
 def create():
     return render_template('create.html')
-
-
-@app.route('/reviews')
-def reviews():
-    return render_template('reviews.html')
 
 
 @app.route('/detail')
