@@ -10,9 +10,10 @@
     <link rel="stylesheet" href="../static/css/default.css" />
     <link rel="stylesheet" href="../static/css/navigation.css" />
     <link rel="stylesheet" href="../static/css/reviews.css" />
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="../static/js/reviews.js"></script>
+    <script src="../static/js/loginout.js"></script>
   </head>
   <body>
     <div class="topbar">
@@ -20,10 +21,10 @@
         <div class="logo-box" onclick="location.href='/'">
           <img class="logo" src="../static/image/rebookLogo.png" />
         </div>
-        <div class="icon-box">
-          <img class="icon logoutIcon" src="../static/image/logoutIcon.png" />
-          <h3 class="icon-slash">/</h3>
-          <img class="icon writeIcon" src="../static/image/writeIcon.png" />
+        <div class="icon-box" id="icon-box">
+{#          <img class="icon logoutIcon" src="../static/image/logoutIcon.png" />#}
+{#          <h3 class="icon-slash">/</h3>#}
+{#          <img class="icon writeIcon" src="../static/image/writeIcon.png" />#}
         </div>
       </div>
       <div class="bottom-menu">
