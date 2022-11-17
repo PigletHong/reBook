@@ -46,3 +46,30 @@ function writeBtnHandler() {
     alert('값을 모두 올바르게 입력해주세요')
   }
 }
+
+  $(document).ready(function () {
+      api_valid();
+  });
+
+  function api_valid() {
+    $.ajax({
+      type: "GET",
+      url: "/api/token",
+      data: {},
+      success: function (response) {
+        const done = response['result']==='success'?true:false;
+        let temp_html = ``
+        if (done) {
+          temp_html = `<img class="icon logoutIcon" src="../static/image/logoutIcon.png" />
+        <h3 class="icon-slash">/</h3>
+        <img class="icon writeIcon" src="../static/image/writeIcon.png" />`
+
+        } else {
+          temp_html = `<img class="icon logoutIcon" src="../static/image/loginIcon.png"/>
+          <h3 class="icon-slash">/</h3>
+          <img class="icon writeIcon" src="../static/image/joinIcon.png"/>`
+        }
+        $('#icon-boxes').append(temp_html)
+      }
+    })
+}
