@@ -21,12 +21,15 @@ function tagBtnHandler(e) {
   }
 }
 
-function writeBtnHandler() {
+function writeBtnHandler(event) {
+  const writeBtn = event.target;
   const bookUrl = document.querySelector('.book-url').value;
   const bookContent = document.querySelector('.book-content').value;
-
+  
   // 예외 처리
   if(bookUrl.includes('product.kyobobook.co.kr/detail/') && bookContent && selected ){
+    // 한번만 눌리도록 버튼 disabled 처리
+    writeBtn.setAttribute("disabled", "disalbed");
     // user id 값 추가 필요
     $.ajax({
       type: 'POST',

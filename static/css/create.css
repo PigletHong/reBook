@@ -80,4 +80,11 @@ button.write-btn {
   background-color: #ffdc9f;
   color: #0e0e0e;
   padding: 10px;
+  transition: transform  ease-in-out 0.25s;
+}
+
+button.write-btn:active {
+  background-color: #0e0e0e; 
+  color: #ffdc9f;
+  border: 1px solid #ffdc9f;
 }
