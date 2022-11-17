@@ -1,3 +1,4 @@
+
 function join() {
     $.ajax({
         type: "POST",
