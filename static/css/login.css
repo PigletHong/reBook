@@ -1,0 +1,133 @@
+.top-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 32px;
+}
+
+.logo-box {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 60px;
+}
+
+.logo-box .logo {
+    width: 120px;
+}
+
+.icon-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 60px;
+}
+
+.icon-box .icon {
+    width: 28px;
+    margin: 8px;
+}
+
+.bottom-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.bottom-menu p.menu {
+    color: white;
+    padding: 10px;
+    transition: 0.3s ease;
+}
+
+.bottom-menu p.selected {
+    color: #ffdc9f;
+}
+
+.bottom-menu p.selected:hover {
+    border-top: 2px solid #ffdc9f;
+    border-bottom: 2px solid #ffdc9f;
+    padding: 6px 0;
+}
+
+.bottom-menu p:hover {
+    border-top: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    padding: 6px 0;
+}
+
+.bottom-menu p.menu:nth-child(2) {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.total_main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    magin-top: 200px;
+}
+
+.rebook_log {
+    margin-top: -580px;
+}
+
+.total_login_object {
+    margin-top: 250px;
+}
+
+.button_login {
+    font-size: 18px;
+    color: black;
+    margin-bottom: 50px;
+    margin-left: 14px;
+    padding: 7px 30px 7px 30px;
+    background-color: #ffdc9f;
+}
+
+.name_login {
+    font-size: 90px;
+    margin-bottom: 50px;
+    margin-left: 175px;
+    font-weight: bold;
+    color: #FFDC9F;
+}
+
+.name_id {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.id_input_box {
+    padding: 10px 440px 10px 10px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    outline: solid 1px white;
+}
+
+.name_password {
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+.password_input_box {
+    padding: 10px 440px 10px 10px;
+    margin-bottom: 50px;
+    background-color: transparent;
+    outline: solid 1px white;
+}
+
+.box_login_join {
+    margin-left: 220px;
+    position: absolute;
+}
+
+.box_join {
+    margin-left: 48px;
+    font-size: 19px;
+    margin-top: -15px;
+}
