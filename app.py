@@ -59,15 +59,26 @@ def detail():
 
 @app.route('/api/review/', methods=["GET"])
 def get_review():
-    # args = request.args
-    # print(args)
-    review_list = list(db.review.find())
+    type = request.args.get('type', default="")
+    query = request.args.get('query', default="")
+    if type and query:
+        if type == "title":
+            review_list = list(db.review.find(
+                {"bookInfo": {"title": {'$regex': '.*' + query + '.*'}}}))
+        elif type == "author":
+            review_list = list(db.review.find(
+                {"bookInfo": {"author": {'$regex': '.*' + query + '.*'}}}))
+        elif type == "content":
+            review_list = list(db.review.find(
+                {"content": {'$regex': '.*' + query + '.*'}}))
+    else:
+        review_list = list(db.review.find())
     for i in range(len(review_list)):
         review_list[i]['_id'] = str(review_list[i]['_id'])
     return jsonify({'reviews': review_list})
 
 
-@app.route('/api/review', methods=["POST"])
+@ app.route('/api/review', methods=["POST"])
 def create_review():
     # id_receive = request.form['id_give']
     url_receive = request.form['url_give']
@@ -91,7 +102,7 @@ def create_review():
     return jsonify({'msg': '리뷰작성 완료!'})
 
 
-@app.route('/api/login', methods=['POST'])
+@ app.route('/api/login', methods=['POST'])
 def api_login():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
@@ -112,7 +123,7 @@ def api_login():
         return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
 
 
-@app.route('/api/join', methods=['POST'])
+@ app.route('/api/join', methods=['POST'])
 def api_join():
     id_receive = request.form['id_give']
     pw_receive = request.form['pw_give']
@@ -123,7 +134,7 @@ def api_join():
     return jsonify({'result': 'success'})
 
 
-@app.route('/api/token', methods=['GET'])
+@ app.route('/api/token', methods=['GET'])
 def api_valid():
     token_receive = request.cookies.get('mytoken')
 
