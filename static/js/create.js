@@ -1,3 +1,9 @@
+// same with JQuery $(document).ready()
+document.addEventListener("DOMContentLoaded", function(event) {
+  token_valid();
+  writeBtnHandler();
+});
+
 let selected;
 
 function calcTextareaHeight(e) {
@@ -28,6 +34,20 @@ function getUsername() {
     data: {},
     success: function (response) {
       return response['name'];
+    }
+  });
+}
+
+function token_valid() {
+  $.ajax({
+    type: "GET",
+    url: "/api/token",
+    data: {},
+    success: function (response) {
+      const done = response['result'] === 'success' ? true : false;
+      if(!done){
+        window.location.href = '/reviews';
+      }
     }
   });
 }
