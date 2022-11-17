@@ -5,7 +5,6 @@ import datetime
 import config
 import hashlib
 import jwt
-import datetime
 
 SECRET_KEY = 'HONG'
 app = Flask(__name__)
