@@ -1,17 +1,53 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>re:book</title>
 
-    <link rel="stylesheet" href="../static/css/reset.css" />
-    <link rel="stylesheet" href="../static/css/default.css" />
-    <link rel="stylesheet" href="../static/css/join.css" />
-  </head>
-  <body>
-    <h1>회원가입 페이지</h1>
-    <h3>회원가입 폼이 들어갈 자리</h3>
-  </body>
+    <link rel="stylesheet" href="../static/css/reset.css"/>
+    <link rel="stylesheet" href="../static/css/default.css"/>
+    <link rel="stylesheet" href="../static/css/join.css"/>
+    <link rel="stylesheet" href="../static/css/navigation.css"/>
+    <script src="../static/js/join.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+</head>
+
+<body>
+
+<div class="topbar">
+    <div class="top-menu">
+        <div class="logo-box" onclick="location.href='/'">
+            <img class="logo" src="../static/image/rebookLogo.png"/>
+        </div>
+    </div>
+
+    <div class="together">
+        <div class="total_main">
+            <div class="total_login_object">
+                <h1 class="name_login">Join</h1>
+                <div>
+                    <p class="name_id">Id</p>
+                    <input class="id_input_box" type="text" id="userId">
+                </div>
+                <div>
+                    <p class="name_password">Password</p>
+                    <input class="id_input_box" type="password" id="userPwd">
+                </div>
+                <div>
+                    <p class="name_name">Name</p>
+                    <input class="id_input_box" type="text" id="userName">
+                </div>
+                <div class="box_login_join">
+                    <button class="button_login" onclick="join()" style='cursor:pointer'>Join</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
 </html>
