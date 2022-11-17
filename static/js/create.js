@@ -22,12 +22,27 @@ function tagBtnHandler(e) {
 }
 
 function writeBtnHandler() {
-  const bookContent = document.getElementsByClassName('book-content').innerHTML;
-  const bookUrl = document.getElementsByClassName('book-url').innerHTML;
+  const bookUrl = document.querySelector('.book-url').value;
+  const bookContent = document.querySelector('.book-content').value;
 
-  console.log(bookContent, bookUrl);
   // 예외 처리
-  if(!select){
+  if(bookUrl.includes('product.kyobobook.co.kr/detail/') && bookContent && selected ){
+    // user id 값 추가 필요
+    $.ajax({
+      type: 'POST',
+      url: '/api/review',
+      data: {
+        url_give: bookUrl,
+        content_give: bookContent,
+        tag_give: selected,
+      },
+      success: function (response) {
+        alert(response['msg']);
+        // 완료되면 리뷰 리스트 페이지로 나가기
+        window.location.href = '/reviews';
+      },
+    });
+  } else {
+    alert('값을 모두 올바르게 입력해주세요')
   }
-  // ajax call
 }
