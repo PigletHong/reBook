@@ -102,7 +102,8 @@ def api_login():
 
         payload = {
             'id': id_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=120)
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=120),
+            'name': result['name'] #// 토큰에 이름값 추가
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
