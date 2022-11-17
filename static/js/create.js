@@ -77,7 +77,7 @@ function writeBtnHandler(event) {
       success: function (response) {
         alert(response['msg']);
         // 완료되면 리뷰 리스트 페이지로 나가기
-        window.location.href = '/reviews';
+        window.location.href = '/';
       },
     });
   } else {
